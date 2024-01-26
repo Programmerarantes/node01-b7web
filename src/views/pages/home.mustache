@@ -1,0 +1,14 @@
+{{>partials/header}}
+
+    {{#showOld}}
+        Opa, tudo bem? Qual a boa {{ name}} {{lastname }}?
+    {{/showOld}}
+
+    <h2>Produtos</h2>
+    <ul>
+        
+        {{#products}}
+           {{>partials/productItem}} 
+        {{/products}}
+    </ul>
+{{>partials/footer}}
