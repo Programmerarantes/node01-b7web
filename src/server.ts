@@ -1,7 +1,10 @@
 import express from "express";
 import mainRoutes from './routes/index'
 import mustache from 'mustache-express'
+import dotenv from 'dotenv';
 import path from "path";
+
+dotenv.config();
 
 const app = express();
 
@@ -15,6 +18,8 @@ app.use(express.urlencoded({extended: true}));
 
 app.use(mainRoutes)
 
-app.listen(3000, () => {
-    console.log("Servidor disponível na porta 3000")
+const PORT = process.env.PORT
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando na porta ${PORT}`)
 });
