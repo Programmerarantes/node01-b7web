@@ -3,7 +3,15 @@
     {{#showOld}}
         Opa, tudo bem? Qual a boa {{ name}} {{lastname }}?
     {{/showOld}}
+    <hr/>
+    <h2>Usuários do banco</h2>
+    <ul>
 
+        {{#users}}
+            <li>{{nome}} - {{cpf}} - {{rg}} - {{data_nascimento}} - {{sexo}}</li>
+
+        {{/users}}
+    </ul>
     <hr/>
     <h2>Produtos</h2>
     <ul>

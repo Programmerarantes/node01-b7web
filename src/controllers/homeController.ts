@@ -1,8 +1,15 @@
 import { Request, Response } from "express";
 
 import { Product } from '../models/Product';
+import { User } from "../models/User";
 
-export const home = (req: Request, res: Response)=> {
+export const home = async (req: Request, res: Response)=> {
+    let users = await User.findAll({
+        attributes: ['nome', 'cpf', 'data_nascimento']
+
+    });
+    console.log("Usuários:", JSON.stringify(users))
+
     let age: number = 51;
     let showOld: boolean = false;
 
@@ -19,7 +26,8 @@ export const home = (req: Request, res: Response)=> {
         lastname: "Chaves",
         showOld,
         products: list,
-        expensives: expensiveList
+        expensives: expensiveList,
+        users
     });
 
 };
