@@ -1,10 +1,33 @@
 import { Request, Response } from "express";
-import { Op } from 'sequelize';
-import { Product } from '../models/Product';
+//import { Op } from 'sequelize';
 import { User } from "../models/User";
 
+export const criarUsuario = async (req: Request, res: Response) => {
+    try {
+        const { nome, cpf, rg, data_nascimento, sexo } = req.body;
+
+        if (!nome || !cpf || !rg || !data_nascimento || !sexo) {
+            return res.status(400).json({ error: 'Todos os campos são obrigatórios' });
+        }
+
+        const newUser = await User.create({
+            nome,
+            cpf,
+            rg,
+            data_nascimento,
+            sexo,
+        });
+
+        res.redirect('/');
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Erro ao criar usuário' });
+    }
+};
 
 export const home = async (req: Request, res: Response)=> {
+    let users = await User.findAll();
+    
     //build + save
     /*const user = User.build({
         id: '55',
@@ -26,24 +49,10 @@ export const home = async (req: Request, res: Response)=> {
     })
     */
 
-
-    let age: number = 51;
-    let showOld: boolean = false;
-
-    if(age > 50){
-        showOld = true;
-    }
-
-    let list = Product.getAll();
-    let expensiveList = Product.getPriceAfter(12);
     
     res.render('pages/home', {
         
-        name: "Matheus",
-        lastname: "Chaves",
-        showOld,
-        products: list,
-        expensives: expensiveList
+       users
     });
 
 };

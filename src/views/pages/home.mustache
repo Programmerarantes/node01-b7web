@@ -1,8 +1,20 @@
 {{>partials/header}}
-
-    {{#showOld}}
-        Opa, tudo bem? Qual a boa {{ name}} {{lastname }}?
-    {{/showOld}}
+    <form method="POST" action="/novousuario">
+    <label></label>
+    <input type="text" name="nome" placeholder="digite seu nome" /><br/><br/>
+    <input type="text" name="cpf" placeholder="digite seu cpf" /><br/><br/>
+    <input type="text" name="rg" placeholder="digite seu rg" /><br/><br/>
+    <input type="date" name="data_nascimento" placeholder="digite sua data de nascimento" /><br/><br/>
+    <div>
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo">
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Outros">Outros</option>
+        </select>
+    </div> </br>
+    <input type="submit" value="Inserir Usuário" />
+</form>
     <hr/>
     <h2>Usuários do banco</h2>
     <ul>
@@ -13,20 +25,5 @@
         {{/users}}
     </ul>
     <hr/>
-    <h2>Produtos</h2>
-    <ul>
-        
-        {{#products}}
-           {{>partials/productItem}} 
-        {{/products}}
-    </ul>
-
-    <hr/>
-    <h2>Produtos a partir de R$ 12</h2>
-    <ul>
-        
-        {{#expensives}}
-           {{>partials/productItem}} 
-        {{/expensives}}
-    </ul>
+    
 {{>partials/footer}}

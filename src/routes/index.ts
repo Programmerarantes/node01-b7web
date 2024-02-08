@@ -18,4 +18,6 @@ router.get('/idade', UserController.idadeForm)
 
 router.post('/idade', UserController.idadeAction)
 
+router.post('/novousuario', HomeController.criarUsuario)
+
 export default router
