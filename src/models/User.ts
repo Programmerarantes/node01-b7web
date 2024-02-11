@@ -1,18 +1,13 @@
 import {Model, DataTypes } from 'sequelize';
 import { sequelize } from '../instances/pg';
 
-interface DataNascimento {
-    dia: number;
-    mes: number;
-    ano: number;
-}
 
 interface UserInstance extends Model {
     id: number,
     nome: string,
     cpf: string,
     rg: string, 
-    data_nascimento: DataNascimento,
+    data_nascimento: Date,
     sexo: string
 }
 
