@@ -20,7 +20,10 @@
     <ul>
 
         {{#users}}
-            <li>{{nome}} - {{cpf}} - {{rg}} - {{data_nascimento}} - {{sexo}}</li>
+            <li>
+                {{nome}} - {{cpf}} - {{rg}} - {{data_nascimento}} - {{sexo}}
+                - <a href="/usuario/{{id}}/excluir">Excluir</a>
+            </li>
 
         {{/users}}
     </ul>
